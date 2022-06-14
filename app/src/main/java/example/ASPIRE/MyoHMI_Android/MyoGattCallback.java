@@ -24,6 +24,16 @@ import java.util.UUID;
 
 /**
  * Created by naoki on 15/04/15.
+ *
+ * Class for establishing data transfer with BLE device
+ *
+ * Updated by Amir Modan (amir5modan@gmail.com)
+ * Changes include:
+ * <ui>
+ *     <li>
+ *         Adding compatibility for connection with HM-10 BLE module
+ *     </li>
+ * </ui>
  */
 
 public class MyoGattCallback extends BluetoothGattCallback {
@@ -96,8 +106,6 @@ public class MyoGattCallback extends BluetoothGattCallback {
     private ProgressBar progress;
     private FeatureCalculator fcalc;//maybe needs to be later in process
     private String myoDevice;
-    byte[] myo_data = new byte[] {0,0,0,0,0,0,0,0};
-    private int numChannels = ListActivity.getNumChannels();
 
     public MyoGattCallback(Handler handler, TextView view, ProgressBar prog, TextView connectingText, Plotter plot1, Plotter plot2, Plotter plot3, Plotter plot4, View v) {
         mHandler = handler;
@@ -360,15 +368,21 @@ public class MyoGattCallback extends BluetoothGattCallback {
             byte[] emg_data = characteristic.getValue();
             byte[] emg_data2 = new byte[8];
 
+            // Switch between different Myo Devices
             switch(myoDevice) {
+                // If the device is the Myo Armband
                 case "ArmBand":
                     byte[] emg_data1 = Arrays.copyOfRange(emg_data, 0, 8);
                     emg_data2 = Arrays.copyOfRange(emg_data, 8, 16);
+                    // Plot raw sEMG data from Myo Armband
                     plotter.pushPlotter(emg_data);
+
+                    // Extract features from EMG data
                     fcalc.pushFeatureBuffer(emg_data2);
                     break;
                 case "Muscle Sensor":
 
+                    // Plotting to Myo Armband Plotter
                     byte[] myo_plot = new byte[emg_data.length*2];
                     int j = 0;
                     for(int i = 0; i < myo_plot.length; i+=8) {
@@ -385,6 +399,8 @@ public class MyoGattCallback extends BluetoothGattCallback {
 
                         j+=4;
                     }
+
+                    // Plotting to Custom plotter
                     if(plotter != null && plotter2 != null && plotter3 != null && plotter4 != null && EmgFragment.emgOn()) {
                         plotter.pushMyowarePlotter(myo_plot);
                         plotter2.pushMyowarePlotter(myo_plot);
@@ -394,6 +410,7 @@ public class MyoGattCallback extends BluetoothGattCallback {
                         plotter.pushMyowarePlotter(myo_plot);
                     }
 
+                    // Extract features from sEMG data
                     for(int i = 0; i < myo_plot.length; i+=8) {
                         fcalc.pushFeatureBuffer(Arrays.copyOfRange(myo_plot, i, i+4));
                     }
