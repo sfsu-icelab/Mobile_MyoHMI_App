@@ -5,7 +5,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.android.tools.build:gradle:7.1.3'
     }
 }
 apply plugin: 'android-library'
@@ -37,18 +37,22 @@ android {
     }
 }
 
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 project.group = 'com.echo'
 project.version = '1.0'
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
             pom {
                 artifactId = 'holographlibrary'
             }
-            repository(url: "file:///Users/jep/AndroidStudioProjects/powerje-mvn-repo")
+        }
+    }
+    repositories {
+        maven {
+            url = uri("file:///Users/jep/AndroidStudioProjects/powerje-mvn-repo")
         }
     }
 }
