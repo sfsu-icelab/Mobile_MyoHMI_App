@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/listView_item"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:background="@drawable/my_selector"
+        android:text="TextView"
+        />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    //buildToolsVersion '26.0.2'
+
+    defaultConfig {
+        applicationId "example.ASPIRE.MyoHMI_Android"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        jackOptions {
+//            enabled true
+//        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    testImplementation 'junit:junit:4.12'
+//    compile 'com.echo:holographlibrary:1.0'
+    //compile 'com.github.Androguide:HoloGraphLibrary:1.0'
+    implementation project(':HoloGraphLibrary')
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    implementation 'com.github.haifengl:smile-core:1.0.4'
+
+    implementation 'com.amazonaws:aws-android-sdk-lambda:2.2.+'
+    implementation 'com.amazonaws:aws-android-sdk-core:2.2.+'
+    implementation 'com.amazonaws:aws-android-sdk-cognito:2.2.+'
+    //compile 'com.amazonaws:aws-android-sdk-iot:2.2.+'
+
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.4.4'
+    //compile files('libs/aws-android-sdk-cognito-2.4.5.jar')
+    implementation 'com.android.support:percent:27.1.1'
+
+    implementation'com.android.volley:volley:1.1.0'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.6.1'
+    }
+}
+
+// Required because retrolambda is on maven central
+//repositories {
+//    mavenCentral()
+//}
+
+//apply plugin: 'me.tatarka.retrolambda'
+
+/*
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}*/

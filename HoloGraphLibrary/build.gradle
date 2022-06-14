@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.2'
+    }
+}
+apply plugin: 'android-library'
+
+dependencies {
+    implementation 'com.android.support:support-v4:13.0.0'
+}
+
+android {
+    compileSdkVersion 27
+    //buildToolsVersion '25.0.0'
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+
+        androidTest.setRoot('tests')
+    }
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 16
+    }
+}
+
+apply plugin: 'maven'
+
+project.group = 'com.echo'
+project.version = '1.0'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom {
+                artifactId = 'holographlibrary'
+            }
+            repository(url: "file:///Users/jep/AndroidStudioProjects/powerje-mvn-repo")
+        }
+    }
+}

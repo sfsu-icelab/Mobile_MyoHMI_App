@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+
+    <item
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/menu_myo_white"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/connect"
+                android:title="Connect"
+                android:orderInCategory="100"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/disconnect"
+                android:title="Disconnect"
+                android:orderInCategory="100"
+                app:showAsAction="never"/>
+        </menu>
+    </item>
+</menu>

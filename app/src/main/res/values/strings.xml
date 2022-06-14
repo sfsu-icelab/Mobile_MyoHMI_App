@@ -1,0 +1,7 @@
+<resources>
+    <string name="login_title">Myo HMI - Login</string>
+    <string name="register_title">Myo HMI - Register</string>
+    <string name="app_name">Myo HMI</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_list">Bluetooth Devices</string>
+</resources>

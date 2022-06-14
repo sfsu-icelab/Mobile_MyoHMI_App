@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    android:weightSum="2"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="65%"
+        android:layout_weight="1.0"
+        android:orientation="horizontal"
+        android:id="@+id/scan_options">
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/myo_scan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/devices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Myo Devices"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/borderLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/devices"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="#000000" />
+
+            <ListView
+                android:id="@+id/listView1"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:layout_below="@id/devices"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp" />
+
+            <Button
+                android:id="@+id/scanButton"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/listView1"
+                android:layout_centerInParent="true"
+                android:text="SCAN"
+                android:textSize="20dp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/listView1"
+                android:layout_centerInParent="true"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/scanning_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progressBar2"
+                android:layout_centerHorizontal="true"
+                android:text="Scanning For Devices"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:visibility="invisible"/>
+
+        </android.support.percent.PercentRelativeLayout>
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/hack_scan"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/devices_hack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="HACKberry"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/borderLine_hack"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/devices_hack"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="#000000" />
+
+            <ListView
+                android:id="@+id/listView1_hack"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:layout_below="@id/devices_hack"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp" />
+
+            <Button
+                android:id="@+id/scanButton_hack"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/listView1_hack"
+                android:layout_centerInParent="true"
+                android:text="SCAN"
+                android:textSize="20dp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar2_hack"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/listView1_hack"
+                android:layout_centerInParent="true"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/scanning_text_hack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progressBar2_hack"
+                android:layout_centerHorizontal="true"
+                android:text="Scanning For Devices"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:visibility="invisible"/>
+
+        </android.support.percent.PercentRelativeLayout>
+
+    </LinearLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/scan_options">
+
+        <Button
+            android:id="@+id/connectButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_centerInParent="true"
+            android:text="CONNECT"
+            android:textSize="45dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/number_channels"
+            android:layout_above="@+id/connectButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:hint="Enter Number of Channels" />
+
+    </android.support.percent.PercentRelativeLayout>
+
+</android.support.percent.PercentRelativeLayout>
