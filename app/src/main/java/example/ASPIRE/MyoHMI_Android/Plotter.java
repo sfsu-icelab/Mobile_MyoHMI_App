@@ -30,7 +30,18 @@ import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
 import java.util.ArrayList;
 
 /**
+ *
+ * Activity which plots raw sEMG data and features
+ *
  * Created by Alex on 6/30/2017.
+ *
+ * Updated by Amir Modan (amir5modan@gmail.com)
+ * Changes include:
+ * <ui>
+ *  <li>Adding Plotter for generic EMG devices</li>
+ *  <li>Said plotter can plot any number of channels</li>
+ *  <li>Which channel is plotted depends on drop-down selection</li>
+ * </ui>
  */
 
 public class Plotter extends Activity {
@@ -397,14 +408,17 @@ public class Plotter extends Activity {
         }
     }
 
+    /**
+     * Plotter for generic ENG device
+     * @param data An array of bytes of any length
+     */
     public void pushMyowarePlotter(byte[] data) {
 
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-//                    dataView.setText(callback_msg);
-//                    Log.d("In: ", "EMG Graph");
                 lineGraph.removeAllLines();
+
                 for(int sample = 0; sample < data.length/8; sample++) {
                     for (int inputIndex = 0; inputIndex < 8; inputIndex++) {
                         dataList[sample][inputIndex][0] = data[inputIndex + (sample*8)];
@@ -420,23 +434,21 @@ public class Plotter extends Activity {
                     for(int sample = 0; sample < data.length/8; sample++) {
                         addNumber--;
 
-                        //１点目add
                         if (number != 0) {
                             for (int setDatalistIndex = 0; setDatalistIndex < 8; setDatalistIndex++) {
                                 dataList[sample][setDatalistIndex][number] = dataList[sample][setDatalistIndex][number - 1];
                             }
                         }
                         LinePoint linePoint = new LinePoint();
-                        linePoint.setY(dataList[sample][nowGraphIndex][number]); //ランダムで生成した値をSet
-                        linePoint.setX(addNumber); //x軸を１ずつずらしてSet
-                        //linePoint.setColor(Color.parseColor("#9acd32")); // 丸の色をSet
+                        linePoint.setY(dataList[sample][nowGraphIndex][number]);
+                        linePoint.setX(addNumber);
 
                         line.addPoint(linePoint);
                     }
 
                 }
 
-                line.setColor(lineColor); // 線の色をSet
+                line.setColor(lineColor);
 
                 line.setShowingPoints(false);
                 lineGraph.addLine(line);

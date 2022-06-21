@@ -224,8 +224,6 @@ public class FeatureCalculator {
     public static void Train() {
         /* To save training data to file for server comp time analysis */
 //        File file = saver.addData(samplesClassifier);
-        Log.i("The Bat", "samples: " + samplesClassifier.size());
-        Log.i("The Bat", "classes: " + classes.size());
         classifier.Train(samplesClassifier, classes);
     }
 
@@ -343,12 +341,6 @@ public class FeatureCalculator {
             firstCall = (lastCall - winsize + bufsize + 1) % bufsize;
             startFeature = System.nanoTime();
             featureVector = featCalc(samplebuffer);
-            /*for (int i = 0; i < samplebuffer.size(); i++) {
-                samplebuffer.get(i).printDataVector(i + " Ulstyr: ");
-            }
-            for (int i = 0; i < featureVector.getNumRow(); i++) {
-                Log.i("Amygdala", i + " " + featureVector.getInnerArray(i).toString());
-            }*/
 
             imuFeatureVector = featCalcIMU(imusamplebuffer);
 //            imuFeatureVector = new twoDimArray();

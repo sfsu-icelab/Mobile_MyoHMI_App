@@ -240,10 +240,6 @@ public class Classifier {
     public void trainLDA() {
         //if selected gestures is not zero
         if (!trainedLDA) {
-            Log.d("tvp length: ", String.valueOf(trainVectorP.length));
-            Log.i("Eslaf", "eslaf" + Arrays.toString(trainVectorP[trainVectorP.length-1]));
-            Log.d("classes length: ", String.valueOf(classes.length));
-            Log.d("tvp element length", String.valueOf(trainVectorP[0].length));
 
             lda = new LDA(trainVectorP, classes, 0);
             trainedLDA = true;
