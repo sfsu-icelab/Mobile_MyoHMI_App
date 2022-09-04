@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public static boolean loggedIn = false;
     public static String user = "no_login";
+    private CNN cnn = new CNN(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +35,14 @@ public class LoginActivity extends AppCompatActivity {
         final TextView tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
         final Button bLogin = (Button) findViewById(R.id.bSignIn);
         final TextView tvContinueLink = (TextView) findViewById(R.id.tvcontinue);
+        cnn.initialize().addOnFailureListener( e -> Log.e("CNN Error", "Error to setting up gesture classifier.", e) );
 
         tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                LoginActivity.this.startActivity(registerIntent);
+                cnn.classifyAsync().addOnSuccessListener(result -> Log.i("Gesture", result));
+                //Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                //LoginActivity.this.startActivity(registerIntent);
             }
         });
 
