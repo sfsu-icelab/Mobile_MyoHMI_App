@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "example.ASPIRE.MyoHMI_Android.app-mergeDebugResources-31:/values-normal-v4/values-normal-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\admin\\Documents\\AndroidStudio\\Myo-HMI-Android-HACKberry-master\\app\\src\\main\\res\\values-normal\\dimens.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "56",
+                        "endColumns": "43",
+                        "endOffsets": "95"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "43",
+                        "endOffsets": "94"
+                    }
+                }
+            ]
+        }
+    ]
+}

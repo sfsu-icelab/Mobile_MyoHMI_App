@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "example.ASPIRE.MyoHMI_Android.app-mergeDebugResources-31:/values-v14/values-v14.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\admin\\Documents\\AndroidStudio\\Myo-HMI-Android-HACKberry-master\\HoloGraphLibrary\\build\\intermediates\\packaged_res\\debug\\values-v14\\values-v14.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "152"
+                    }
+                }
+            ]
+        }
+    ]
+}

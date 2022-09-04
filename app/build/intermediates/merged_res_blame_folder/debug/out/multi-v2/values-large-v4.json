@@ -1,0 +1,62 @@
+{
+    "logs": [
+        {
+            "outputFile": "example.ASPIRE.MyoHMI_Android.app-mergeDebugResources-31:/values-large-v4/values-large-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\admin\\.gradle\\caches\\transforms-3\\e52a0ce5192ba8fcce7d76ea8c7083e5\\transformed\\material-1.6.1\\res\\values-large-v4\\values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,10",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,177,311,752",
+                        "endLines": "2,3,9,15",
+                        "endColumns": "121,133,10,10",
+                        "endOffsets": "172,306,747,1190"
+                    },
+                    "to": {
+                        "startLines": "12,13,14,20",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "796,918,1052,1493",
+                        "endLines": "12,13,19,25",
+                        "endColumns": "121,133,10,10",
+                        "endOffsets": "913,1047,1488,1931"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\admin\\Documents\\AndroidStudio\\Myo-HMI-Android-HACKberry-master\\app\\src\\main\\res\\values-large\\dimens.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "56",
+                        "endColumns": "43",
+                        "endOffsets": "95"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "532",
+                        "endColumns": "43",
+                        "endOffsets": "571"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\admin\\.gradle\\caches\\transforms-3\\41f5190bc1e847d986086b01e34f4ad4\\transformed\\appcompat-1.5.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,185,256,326,396,464,532,636",
+                        "endColumns": "58,70,70,69,69,67,67,103,115",
+                        "endOffsets": "109,180,251,321,391,459,527,631,747"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,10,11",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,185,256,326,396,464,576,680",
+                        "endColumns": "58,70,70,69,69,67,67,103,115",
+                        "endOffsets": "109,180,251,321,391,459,527,675,791"
+                    }
+                }
+            ]
+        }
+    ]
+}

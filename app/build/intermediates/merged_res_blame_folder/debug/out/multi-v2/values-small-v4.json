@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "example.ASPIRE.MyoHMI_Android.app-mergeDebugResources-31:/values-small-v4/values-small-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\admin\\Documents\\AndroidStudio\\Myo-HMI-Android-HACKberry-master\\app\\src\\main\\res\\values-small\\dimens.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "56",
+                        "endColumns": "43",
+                        "endOffsets": "95"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "43",
+                        "endOffsets": "94"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\admin\\.gradle\\caches\\transforms-3\\e52a0ce5192ba8fcce7d76ea8c7083e5\\transformed\\material-1.6.1\\res\\values-small-v4\\values-small-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,128,198,270",
+                        "endColumns": "72,69,71,69",
+                        "endOffsets": "123,193,265,335"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "99,172,242,314",
+                        "endColumns": "72,69,71,69",
+                        "endOffsets": "167,237,309,379"
+                    }
+                }
+            ]
+        }
+    ]
+}

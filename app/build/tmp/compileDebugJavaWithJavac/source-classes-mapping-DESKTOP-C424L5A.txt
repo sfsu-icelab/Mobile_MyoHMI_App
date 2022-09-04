@@ -1,0 +1,128 @@
+example/ASPIRE/MyoHMI_Android/BuildConfig.java
+ example.ASPIRE.MyoHMI_Android.BuildConfig
+example/ASPIRE/MyoHMI_Android/RegisterRequest.java
+ example.ASPIRE.MyoHMI_Android.RegisterRequest
+example/ASPIRE/MyoHMI_Android/DataVector.java
+ example.ASPIRE.MyoHMI_Android.DataVector
+example/ASPIRE/MyoHMI_Android/exportEMGRequest.java
+ example.ASPIRE.MyoHMI_Android.exportEMGRequest
+example/ASPIRE/MyoHMI_Android/BluetoothConnection.java
+ example.ASPIRE.MyoHMI_Android.BluetoothConnection
+example/ASPIRE/MyoHMI_Android/CloudUpload.java
+ example.ASPIRE.MyoHMI_Android.CloudUpload
+ example.ASPIRE.MyoHMI_Android.UploadListener
+example/ASPIRE/MyoHMI_Android/SaveData.java
+ example.ASPIRE.MyoHMI_Android.SaveData
+example/ASPIRE/MyoHMI_Android/LoginActivity.java
+ example.ASPIRE.MyoHMI_Android.LoginActivity
+ example.ASPIRE.MyoHMI_Android.LoginActivity$1
+ example.ASPIRE.MyoHMI_Android.LoginActivity$2
+ example.ASPIRE.MyoHMI_Android.LoginActivity$3
+ example.ASPIRE.MyoHMI_Android.LoginActivity$3$1
+example/ASPIRE/MyoHMI_Android/MyoCommandList.java
+ example.ASPIRE.MyoHMI_Android.MyoCommandList
+example/ASPIRE/MyoHMI_Android/Util.java
+ example.ASPIRE.MyoHMI_Android.Util
+example/ASPIRE/MyoHMI_Android/ServerCommunicationThread.java
+ example.ASPIRE.MyoHMI_Android.ServerCommunicationThread
+example/ASPIRE/MyoHMI_Android/PagerAdapter.java
+ example.ASPIRE.MyoHMI_Android.PagerAdapter
+example/ASPIRE/MyoHMI_Android/SendToUnity.java
+ example.ASPIRE.MyoHMI_Android.SendToUnity
+ example.ASPIRE.MyoHMI_Android.SendToUnity$1
+example/ASPIRE/MyoHMI_Android/LoginRequest.java
+ example.ASPIRE.MyoHMI_Android.LoginRequest
+example/ASPIRE/MyoHMI_Android/RegisterActivity.java
+ example.ASPIRE.MyoHMI_Android.RegisterActivity
+ example.ASPIRE.MyoHMI_Android.RegisterActivity$1
+ example.ASPIRE.MyoHMI_Android.RegisterActivity$1$1
+example/ASPIRE/MyoHMI_Android/Credentials.java
+ example.ASPIRE.MyoHMI_Android.Credentials
+example/ASPIRE/MyoHMI_Android/ListActivity.java
+ example.ASPIRE.MyoHMI_Android.ListActivity
+ example.ASPIRE.MyoHMI_Android.ListActivity$1
+ example.ASPIRE.MyoHMI_Android.ListActivity$10
+ example.ASPIRE.MyoHMI_Android.ListActivity$11
+ example.ASPIRE.MyoHMI_Android.ListActivity$2
+ example.ASPIRE.MyoHMI_Android.ListActivity$3
+ example.ASPIRE.MyoHMI_Android.ListActivity$4
+ example.ASPIRE.MyoHMI_Android.ListActivity$4$1
+ example.ASPIRE.MyoHMI_Android.ListActivity$5
+ example.ASPIRE.MyoHMI_Android.ListActivity$6
+ example.ASPIRE.MyoHMI_Android.ListActivity$7
+ example.ASPIRE.MyoHMI_Android.ListActivity$8
+ example.ASPIRE.MyoHMI_Android.ListActivity$9
+example/ASPIRE/MyoHMI_Android/ClientCommunicationThread.java
+ example.ASPIRE.MyoHMI_Android.ClientCommunicationThread
+example/ASPIRE/MyoHMI_Android/Lambda.java
+ example.ASPIRE.MyoHMI_Android.Lambda
+ example.ASPIRE.MyoHMI_Android.Lambda$LTask
+example/ASPIRE/MyoHMI_Android/ObjectIO.java
+ example.ASPIRE.MyoHMI_Android.ObjectIO
+example/ASPIRE/MyoHMI_Android/LambdaInterface.java
+ example.ASPIRE.MyoHMI_Android.LambdaInterface
+example/ASPIRE/MyoHMI_Android/WelcomeActivity.java
+ example.ASPIRE.MyoHMI_Android.WelcomeActivity
+ example.ASPIRE.MyoHMI_Android.WelcomeActivity$1
+ example.ASPIRE.MyoHMI_Android.WelcomeActivity$2
+example/ASPIRE/MyoHMI_Android/MyoGattCallback.java
+ example.ASPIRE.MyoHMI_Android.MyoGattCallback
+ example.ASPIRE.MyoHMI_Android.MyoGattCallback$1
+ example.ASPIRE.MyoHMI_Android.MyoGattCallback$2
+example/ASPIRE/MyoHMI_Android/FeatureFragment.java
+ example.ASPIRE.MyoHMI_Android.FeatureFragment
+example/ASPIRE/MyoHMI_Android/FeatureCalculator.java
+ example.ASPIRE.MyoHMI_Android.FeatureCalculator
+ example.ASPIRE.MyoHMI_Android.FeatureCalculator$1
+ example.ASPIRE.MyoHMI_Android.twoDimArray
+example/ASPIRE/MyoHMI_Android/ReceiveFromUnity.java
+ example.ASPIRE.MyoHMI_Android.ReceiveFromUnity
+example/ASPIRE/MyoHMI_Android/Plotter.java
+ example.ASPIRE.MyoHMI_Android.Plotter
+ example.ASPIRE.MyoHMI_Android.Plotter$1
+ example.ASPIRE.MyoHMI_Android.Plotter$2
+ example.ASPIRE.MyoHMI_Android.Plotter$3
+ example.ASPIRE.MyoHMI_Android.Plotter$4
+ example.ASPIRE.MyoHMI_Android.Plotter$5
+ example.ASPIRE.MyoHMI_Android.Plotter$6
+ example.ASPIRE.MyoHMI_Android.Plotter$7
+example/ASPIRE/MyoHMI_Android/ImuFragment.java
+ example.ASPIRE.MyoHMI_Android.ImuFragment
+ example.ASPIRE.MyoHMI_Android.ImuFragment$1
+ example.ASPIRE.MyoHMI_Android.ImuFragment$2
+example/ASPIRE/MyoHMI_Android/ClassificationFragment.java
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$1
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$1$1
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$1$2
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$10
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$11
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$12
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$13
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$13$1
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$14
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$2
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$3
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$4
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$5
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$6
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$7
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$8
+ example.ASPIRE.MyoHMI_Android.ClassificationFragment$9
+example/ASPIRE/MyoHMI_Android/MainActivity.java
+ example.ASPIRE.MyoHMI_Android.MainActivity
+ example.ASPIRE.MyoHMI_Android.MainActivity$1
+ example.ASPIRE.MyoHMI_Android.MainActivity$2
+ example.ASPIRE.MyoHMI_Android.MainActivity$TabsAdapter
+ example.ASPIRE.MyoHMI_Android.MainActivity$TabsAdapter$TabInfo
+example/ASPIRE/MyoHMI_Android/Classifier.java
+ example.ASPIRE.MyoHMI_Android.Classifier
+example/ASPIRE/MyoHMI_Android/emgConsumer.java
+ example.ASPIRE.MyoHMI_Android.emgConsumer
+example/ASPIRE/MyoHMI_Android/EmgFragment.java
+ example.ASPIRE.MyoHMI_Android.EmgFragment
+ example.ASPIRE.MyoHMI_Android.EmgFragment$1
+ example.ASPIRE.MyoHMI_Android.EmgFragment$2
+ example.ASPIRE.MyoHMI_Android.EmgFragment$3
+ example.ASPIRE.MyoHMI_Android.EmgFragment$4
+ example.ASPIRE.MyoHMI_Android.EmgFragment$5

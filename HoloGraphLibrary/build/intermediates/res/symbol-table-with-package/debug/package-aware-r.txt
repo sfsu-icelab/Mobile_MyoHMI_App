@@ -1,0 +1,6 @@
+com.echo.holographlibrary
+drawable ic_launcher
+drawable popup_black
+string app_name
+style AppBaseTheme
+style AppTheme

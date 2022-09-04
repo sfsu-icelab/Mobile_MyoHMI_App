@@ -1,0 +1,200 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="example.ASPIRE.MyoHMI_Android"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+11-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:6:5-79
+11-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:6:22-76
+12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+12-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:7:5-81
+12-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:7:22-78
+13    <uses-permission android:name="android.permission.BLUETOOTH" />
+13-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:8:5-68
+13-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:8:22-65
+14    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+14-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:9:5-74
+14-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:9:22-71
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:10:5-67
+15-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:10:22-64
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:11:5-79
+16-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:11:22-76
+17    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+17-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:12:5-80
+17-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:12:22-77
+18    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+18-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:13:5-81
+18-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:13:22-78
+19
+20    <uses-feature
+20-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:15:5-17:35
+21        android:name="android.hardware.bluetooth_le"
+21-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:16:9-53
+22        android:required="true" />
+22-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:17:9-32
+23
+24    <!-- <feature android:name="android.hardware.bluetooth_le" android:required="true" /> -->
+25
+26    <permission
+26-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:21:5-23:37
+27        android:name="android.permission.BLUETOOTH"
+27-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:22:9-52
+28        android:label="BLUETOOTH" />
+28-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:23:9-34
+29    <permission android:name="android.permission.BLUETOOTH_ADMIN" />
+29-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:24:5-69
+29-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:24:17-66
+30    <permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+30-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:25:5-74
+30-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:25:17-71
+31    <permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+31-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:26:5-76
+31-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:26:17-73
+32
+33    <supports-screens
+33-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:28:5-31:39
+34        android:largeScreens="true"
+34-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:29:9-36
+35        android:normalScreens="true"
+35-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:30:9-37
+36        android:smallScreens="true" />
+36-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:31:9-36
+37
+38    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+38-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:33:5-75
+38-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:33:22-72
+39
+40    <application
+40-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:35:5-88:19
+41        android:allowBackup="true"
+41-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:36:9-35
+42        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+42-->[androidx.core:core:1.8.0] C:\Users\admin\.gradle\caches\transforms-3\e425537b9f6d05928a30f08ed22ac199\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+43        android:debuggable="true"
+44        android:hardwareAccelerated="false"
+44-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:37:9-44
+45        android:icon="@mipmap/sfsugators"
+45-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:38:9-42
+46        android:label="@string/app_name"
+46-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:39:9-41
+47        android:largeHeap="true"
+47-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:40:9-33
+48        android:theme="@style/AppTheme" >
+48-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:41:9-40
+49        <activity
+49-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:43:9-53:20
+50            android:name="example.ASPIRE.MyoHMI_Android.WelcomeActivity"
+50-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:44:13-44
+51            android:configChanges="keyboardHidden|orientation|screenSize"
+51-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:45:13-74
+52            android:exported="true"
+52-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:47:13-36
+53            android:label="@string/app_name" >
+53-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:46:13-45
+54            <intent-filter>
+54-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:48:13-52:29
+55                <action android:name="android.intent.action.MAIN" />
+55-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:49:17-69
+55-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:49:25-66
+56
+57                <category android:name="android.intent.category.LAUNCHER" />
+57-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:51:17-77
+57-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:51:27-74
+58            </intent-filter>
+59        </activity>
+60        <activity
+60-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:54:9-57:51
+61            android:name="example.ASPIRE.MyoHMI_Android.LoginActivity"
+61-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:55:13-42
+62            android:configChanges="keyboardHidden|orientation|screenSize"
+62-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:56:13-74
+63            android:label="@string/login_title" />
+63-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:57:13-48
+64        <activity
+64-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:58:9-61:48
+65            android:name="example.ASPIRE.MyoHMI_Android.MainActivity"
+65-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:59:13-41
+66            android:configChanges="keyboardHidden|orientation|screenSize"
+66-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:60:13-74
+67            android:label="@string/app_name" />
+67-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:61:13-45
+68        <activity
+68-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:62:9-65:59
+69            android:name="example.ASPIRE.MyoHMI_Android.ListActivity"
+69-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:63:13-41
+70            android:configChanges="keyboardHidden|orientation|screenSize"
+70-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:64:13-74
+71            android:label="@string/title_activity_list" />
+71-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:65:13-56
+72
+73        <service
+73-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:67:9-69:38
+74            android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+74-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:68:13-93
+75            android:enabled="true" />
+75-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:69:13-35
+76
+77        <activity
+77-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:71:9-74:54
+78            android:name="example.ASPIRE.MyoHMI_Android.RegisterActivity"
+78-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:72:13-45
+79            android:configChanges="keyboardHidden|orientation|screenSize"
+79-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:73:13-74
+80            android:label="@string/register_title" />
+80-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:74:13-51
+81
+82        <service
+82-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:77:9-79:44
+83            android:name="example.ASPIRE.MyoHMI_Android.SendToUnity"
+83-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:78:13-40
+84            android:stopWithTask="false" />
+84-->C:\Users\admin\Documents\AndroidStudio\Myo-HMI-Android-HACKberry-master\app\src\main\AndroidManifest.xml:79:13-41
+85
+86        <!--
+87                    <receiver android:name="example.ASPIRE.MyoHMI_Android.ReceiveFromUnity">
+88                    <intent-filter>
+89                        <action android:name="com.test.sendintent.IntentFromUnity"></action>
+90                    </intent-filter>
+91                </receiver>
+92        -->
+93
+94        <meta-data
+94-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\admin\.gradle\caches\transforms-3\5551821a45637dc6bd9974b21e8830a8\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+95            android:name="com.google.android.gms.version"
+95-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\admin\.gradle\caches\transforms-3\5551821a45637dc6bd9974b21e8830a8\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+96            android:value="@integer/google_play_services_version" />
+96-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\admin\.gradle\caches\transforms-3\5551821a45637dc6bd9974b21e8830a8\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+97
+98        <provider
+98-->[androidx.emoji2:emoji2:1.2.0] C:\Users\admin\.gradle\caches\transforms-3\ea64a8a0cdc277d81acb72c9e01db9e6\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+99            android:name="androidx.startup.InitializationProvider"
+99-->[androidx.emoji2:emoji2:1.2.0] C:\Users\admin\.gradle\caches\transforms-3\ea64a8a0cdc277d81acb72c9e01db9e6\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+100            android:authorities="example.ASPIRE.MyoHMI_Android.androidx-startup"
+100-->[androidx.emoji2:emoji2:1.2.0] C:\Users\admin\.gradle\caches\transforms-3\ea64a8a0cdc277d81acb72c9e01db9e6\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+101            android:exported="false" >
+101-->[androidx.emoji2:emoji2:1.2.0] C:\Users\admin\.gradle\caches\transforms-3\ea64a8a0cdc277d81acb72c9e01db9e6\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+102            <meta-data
+102-->[androidx.emoji2:emoji2:1.2.0] C:\Users\admin\.gradle\caches\transforms-3\ea64a8a0cdc277d81acb72c9e01db9e6\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+103                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+103-->[androidx.emoji2:emoji2:1.2.0] C:\Users\admin\.gradle\caches\transforms-3\ea64a8a0cdc277d81acb72c9e01db9e6\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+104                android:value="androidx.startup" />
+104-->[androidx.emoji2:emoji2:1.2.0] C:\Users\admin\.gradle\caches\transforms-3\ea64a8a0cdc277d81acb72c9e01db9e6\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+105            <meta-data
+105-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\admin\.gradle\caches\transforms-3\b9e8d1aa5e3163983970a8dc731eb8c6\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+106                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+106-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\admin\.gradle\caches\transforms-3\b9e8d1aa5e3163983970a8dc731eb8c6\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+107                android:value="androidx.startup" />
+107-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\admin\.gradle\caches\transforms-3\b9e8d1aa5e3163983970a8dc731eb8c6\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+108        </provider>
+109    </application>
+110
+111</manifest>

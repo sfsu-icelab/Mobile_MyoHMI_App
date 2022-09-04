@@ -1,0 +1,182 @@
+[
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_horizon_sphere.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/horizon_sphere.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_add_icon_extra.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/add_icon_extra.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/mipmap-mdpi_myocolors.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/mipmap-mdpi/myocolors.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout_activity_register.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout/activity_register.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_toggleselector.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/toggleselector.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_ic_reset.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/ic_reset.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-normal_activity_list.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-normal/activity_list.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-normal_fragment_emg.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-normal/fragment_emg.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/mipmap-mdpi_emg4.PNG.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/mipmap-mdpi/emg4.PNG"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_emgdata_icon.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/emgdata_icon.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-normal_upload_dialog.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-normal/upload_dialog.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout_listview_custom_item.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout/listview_custom_item.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout_fragment_imu.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout/fragment_imu.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_sfstate.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/sfstate.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_vibrate_icon.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/vibrate_icon.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-large_upload_dialog.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-large/upload_dialog.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-normal_fragment_emg_armband.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-normal/fragment_emg_armband.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/mipmap-hdpi_myocolors.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/mipmap-hdpi/myocolors.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/mipmap-xxhdpi_sfsugators.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/mipmap-xxhdpi/sfsugators.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-large_myradioview.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-large/myradioview.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-normal_mytextview.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-normal/mytextview.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_my_selector.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/my_selector.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-normal_fragment_feature.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-normal/fragment_feature.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/mipmap-hdpi_sfsugators.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/mipmap-hdpi/sfsugators.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-normal_activity_main.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-normal/activity_main.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/mipmap-mdpi_sfsugators.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/mipmap-mdpi/sfsugators.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/menu_menu_main.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/menu/menu_main.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/mipmap-xhdpi_sfsugators.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/mipmap-xhdpi/sfsugators.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_ic_trash.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/ic_trash.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_horizon_face.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/horizon_face.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_menu_myo_white.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/menu_myo_white.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-normal_fragment_classification.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-normal/fragment_classification.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_ic_open_file.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/ic_open_file.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_ic_cloud.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/ic_cloud.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_add_button1.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/add_button1.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-normal_myradioview.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-normal/myradioview.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout_activity_welcome.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout/activity_welcome.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_stop_icon.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/stop_icon.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/mipmap-xxhdpi_myocolors.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/mipmap-xxhdpi/myocolors.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/mipmap-xhdpi_myocolors.png.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/mipmap-xhdpi/myocolors.png"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout_activity_login.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout/activity_login.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_ic_train_button.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/ic_train_button.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/drawable_emgdata_icon_grey.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/drawable/emgdata_icon_grey.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/layout-large_mytextview.xml.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/layout-large/mytextview.xml"
+    },
+    {
+        "merged": "example.ASPIRE.MyoHMI_Android.app-merged_res-33:/raw_welcome_sound.mp3.flat",
+        "source": "example.ASPIRE.MyoHMI_Android.app-main-35:/raw/welcome_sound.mp3"
+    }
+]
