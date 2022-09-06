@@ -95,7 +95,8 @@ public class ClassificationFragment extends Fragment {
             "Decision Tree",
             "Neural Net",
             "KNN",
-            "Adaboost"
+            "Adaboost",
+            "CNN"
     };
     private FeatureCalculator fcalc;
     private List<String> ListElementsArrayList;
@@ -170,8 +171,8 @@ public class ClassificationFragment extends Fragment {
 
         fcalc = new FeatureCalculator(v, getActivity());
         classifier = new Classifier(getActivity());
-        saver = new SaveData(this.getContext());
-        saver.checkReadExternalStoragePermission();
+        //saver = new SaveData(this.getContext());
+        //saver.checkReadExternalStoragePermission();
 
         liveView = (TextView) v.findViewById(R.id.gesture_detected);
         GetValue = (EditText) v.findViewById(R.id.add_gesture_text);
@@ -190,7 +191,7 @@ public class ClassificationFragment extends Fragment {
         ListElementsArrayList = new ArrayList<String>(Arrays.asList(ListElements));
         ClassifierArrayList = new ArrayList<String>(Arrays.asList(classifier_options));
 
-        cloudUpload = new CloudUpload(getActivity());
+        //cloudUpload = new CloudUpload(getActivity());
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.mytextview, ListElementsArrayList);
         ArrayAdapter<String> adapter_classifier = new ArrayAdapter<String>(getActivity(), R.layout.myradioview, ClassifierArrayList);

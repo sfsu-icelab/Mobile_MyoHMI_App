@@ -5,13 +5,13 @@ import android.content.res.AssetManager
 import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
+import org.tensorflow.lite.Interpreter
 import java.io.FileInputStream
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.channels.FileChannel
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import org.tensorflow.lite.Interpreter
 
 class CNN(private val context: Context) {
     // TODO: Add a TF Lite interpreter as a field.
@@ -73,7 +73,7 @@ class CNN(private val context: Context) {
         return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
     }
 
-    private fun classify(): String {
+    private fun classify(featureBuffer: Array<Double>): Int {
         check(isInitialized) { "TF Lite Interpreter is not initialized yet." }
 
         // TODO: Add code to run inference with TF Lite.
@@ -81,7 +81,13 @@ class CNN(private val context: Context) {
 
         //val byteBuffer = convertBitmapToByteBuffer(resizedImage)
         //val byteBuffer = arrayOf(arrayOf(floatArrayOf(2.8875F)),arrayOf(floatArrayOf(5.3375F)),arrayOf(floatArrayOf(17.5625F)),arrayOf(floatArrayOf(18.2F)),arrayOf(floatArrayOf(5.0625F)),arrayOf(floatArrayOf(4.8625F)),arrayOf(floatArrayOf(6.9125F)),arrayOf(floatArrayOf(2.725F)))
-        val byteBuffer = arrayOf(arrayOf(floatArrayOf(21.6125F)),arrayOf(floatArrayOf(66.125F)),arrayOf(floatArrayOf(67.325F)),arrayOf(floatArrayOf(56.4875F)),arrayOf(floatArrayOf(40.1F)),arrayOf(floatArrayOf(12.05F)),arrayOf(floatArrayOf(15.4375F)),arrayOf(floatArrayOf(19.9625F)))
+        val byteBuffer = arrayOf(arrayOf(floatArrayOf(featureBuffer[0].toFloat())),arrayOf(floatArrayOf(
+            featureBuffer[1].toFloat()
+        )),arrayOf(floatArrayOf(featureBuffer[2].toFloat())),arrayOf(floatArrayOf(featureBuffer[3].toFloat())),arrayOf(floatArrayOf(
+            featureBuffer[4].toFloat()
+        )),arrayOf(floatArrayOf(featureBuffer[5].toFloat())),arrayOf(floatArrayOf(featureBuffer[6].toFloat())),arrayOf(floatArrayOf(
+            featureBuffer[7].toFloat()
+        )))
 
         // Define an array to store the model output.
         val output = Array(1) { FloatArray(OUTPUT_CLASSES_COUNT) }
@@ -96,14 +102,14 @@ class CNN(private val context: Context) {
         val resultString =
             "Prediction Result: %d\nConfidence: %2f"
                 .format(maxIndex, result[maxIndex])
-
-        return resultString
+        Log.i("Gesture", resultString)
+        return maxIndex
     }
 
-    fun classifyAsync(): Task<String> {
-        val task = TaskCompletionSource<String>()
+    fun classifyAsync(featureBuffer: Array<Double>): Task<Int> {
+        val task = TaskCompletionSource<Int>()
         executorService.execute {
-            val result = classify()
+            val result = classify(featureBuffer)
             task.setResult(result)
         }
         return task.task

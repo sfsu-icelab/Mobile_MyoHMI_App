@@ -40,9 +40,9 @@ public class LoginActivity extends AppCompatActivity {
         tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cnn.classifyAsync().addOnSuccessListener(result -> Log.i("Gesture", result));
-                //Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                //LoginActivity.this.startActivity(registerIntent);
+                //cnn.classifyAsync(new Float[]{21.6125F,66.125F,67.325F,56.4875F,40.1F,12.05F,15.4375F,19.9625F}).addOnSuccessListener(result -> Log.i("Gesture", result));
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                LoginActivity.this.startActivity(registerIntent);
             }
         });
 

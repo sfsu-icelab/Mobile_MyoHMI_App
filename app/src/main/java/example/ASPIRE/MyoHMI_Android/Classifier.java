@@ -32,6 +32,7 @@ public class Classifier {
     static NeuralNetwork net;
     static KNN knn;
     static AdaBoost forest;
+    static CNN cnn;
     static int[] classes;
     static Activity activity;
     static int choice = 0; //default lda
@@ -44,6 +45,7 @@ public class Classifier {
     static boolean trainedNET;
     static boolean trainedKNN;
     static boolean trainedFOREST;
+    static boolean trainedCNN;
     static boolean trained2 = false;
     static int nIMUSensors = 0;
     static int nSensors = ListActivity.getNumChannels();;
@@ -77,6 +79,7 @@ public class Classifier {
         trainedNET = false;
         trainedKNN = false;
         trainedFOREST = false;
+        trainedCNN = false;
     }
 
     public void setnIMUSensors(int imus) {
@@ -122,6 +125,9 @@ public class Classifier {
             case 6:
                 trainAdaBoost();
                 break;
+            case 7:
+                trainCNN();
+                break;
         }
     }
 
@@ -166,6 +172,8 @@ public class Classifier {
                     Log.d(TAG, "Cross Validation Forest choice: ");
 //                    ArrayList<Float> tempForrest = crossAccuracy(fcalc2.getSamplesClassifier(), fcalc2.getGesturesSize(), 5);
                     break;
+                case 7:
+                    trainCNN();
             }
         }
         choice = newChoice;
@@ -229,6 +237,10 @@ public class Classifier {
 //                    Log.d(TAG, "FOREST");
                     prediction = forest.predict(features);
                     //Log.d(TAG, "AdaBoost");
+                    break;
+                case 7:
+                    //cnn.classifyAsync(new Double[]{21.6125,66.125,67.325,56.4875,40.1,12.05,15.4375,19.9625}).addOnSuccessListener(result -> Log.i("Gesture", result));
+                    cnn.classifyAsync(new Double[]{features[0],features[1],features[2],features[3],features[4],features[5],features[6],features[7]}).addOnSuccessListener(result -> prediction = result);
                     break;
             }
 //            Log.d("TIME", String.valueOf(System.currentTimeMillis() - MyoGattCallback.superTimeInitial));
@@ -299,6 +311,14 @@ public class Classifier {
         if (!trainedFOREST) {
             forest = new AdaBoost(trainVectorP, classes, 100, 64);
             trainedFOREST = true;
+        }
+    }
+
+    public void trainCNN() {
+        if (!trainedCNN) {
+            cnn = new CNN(activity.getApplicationContext());
+            cnn.initialize().addOnFailureListener( e -> Log.e("CNN Error", "Error to setting up gesture classifier.", e) );
+            trainedCNN = true;
         }
     }
 
