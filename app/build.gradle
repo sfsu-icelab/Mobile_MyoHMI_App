@@ -27,6 +27,7 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+    namespace 'example.ASPIRE.MyoHMI_Android'
 }
 
 dependencies {
@@ -35,7 +36,7 @@ dependencies {
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     testImplementation 'junit:junit:4.13.2'
 //    compile 'com.echo:holographlibrary:1.0'
@@ -45,7 +46,7 @@ dependencies {
     implementation 'com.github.haifengl:smile-core:1.0.4'
 
     implementation 'com.amazonaws:aws-android-sdk-lambda:2.2.+'
-    implementation 'com.amazonaws:aws-android-sdk-core:2.2.+'
+    implementation 'com.amazonaws:aws-android-sdk-core:2.4.4'
     implementation 'com.amazonaws:aws-android-sdk-cognito:2.2.+'
     //compile 'com.amazonaws:aws-android-sdk-iot:2.2.+'
 
