@@ -480,12 +480,14 @@ public class Plotter extends Activity {
 
                     for (int i = 0; i < numChannels; i++) {
                         //2000 per division 14 000 in total
-                        entries0.add(new RadarEntry(setMaxValue(f0.get(i).floatValue() * 200)));
-                        entries1.add(new RadarEntry(setMaxValue(f1.get(i).floatValue() * 200)));
-                        entries2.add(new RadarEntry(setMaxValue(f2.get(i).floatValue() * 200)));
-                        entries3.add(new RadarEntry(setMaxValue(f3.get(i).floatValue() * 170)));
-                        entries4.add(new RadarEntry(setMaxValue(f4.get(i).floatValue() * 200)));
-                        entries5.add(new RadarEntry(setMaxValue(f5.get(i).floatValue() * 200)));
+                        if(f0.size() == numChannels && f1.size() == numChannels && f2.size() == numChannels && f3.size() == numChannels && f4.size() == numChannels && f5.size() == numChannels) {
+                            entries0.add(new RadarEntry(setMaxValue(f0.get(i).floatValue() * 200)));
+                            entries1.add(new RadarEntry(setMaxValue(f1.get(i).floatValue() * 200)));
+                            entries2.add(new RadarEntry(setMaxValue(f2.get(i).floatValue() * 200)));
+                            entries3.add(new RadarEntry(setMaxValue(f3.get(i).floatValue() * 170)));
+                            entries4.add(new RadarEntry(setMaxValue(f4.get(i).floatValue() * 200)));
+                            entries5.add(new RadarEntry(setMaxValue(f5.get(i).floatValue() * 200)));
+                        }
                     }
 
                     ArrayList<IRadarDataSet> sets = new ArrayList<IRadarDataSet>();

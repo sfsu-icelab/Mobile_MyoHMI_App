@@ -1,5 +1,7 @@
 package example.ASPIRE.MyoHMI_Android;
 
+import static example.ASPIRE.MyoHMI_Android.Classifier.activity;
+
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.concurrent.ExecutionException;
 
 public class WelcomeActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 3000;
@@ -36,7 +40,7 @@ public class WelcomeActivity extends AppCompatActivity {
             public void run() {
 
 
-                Intent homeIntent = new Intent(WelcomeActivity.this, LoginActivity.class);
+                Intent homeIntent = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(homeIntent);
                 finish();
             }

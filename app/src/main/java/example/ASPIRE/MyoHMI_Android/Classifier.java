@@ -1,11 +1,17 @@
 package example.ASPIRE.MyoHMI_Android;
 
+import static example.ASPIRE.MyoHMI_Android.ListActivity.getNumChannels;
+
 import android.app.Activity;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.tensorflow.lite.examples.transfer.api.TransferLearningModel;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Queue;
+import java.util.concurrent.ExecutionException;
 
 import smile.classification.AdaBoost;
 import smile.classification.DecisionTree;
@@ -32,7 +38,7 @@ public class Classifier {
     static NeuralNetwork net;
     static KNN knn;
     static AdaBoost forest;
-    static CNN cnn;
+    CNN cnn;
     static int[] classes;
     static Activity activity;
     static int choice = 0; //default lda
@@ -48,7 +54,6 @@ public class Classifier {
     static boolean trainedCNN;
     static boolean trained2 = false;
     static int nIMUSensors = 0;
-    static int nSensors = ListActivity.getNumChannels();;
     static FeatureCalculator fcalc2 = new FeatureCalculator();
     private static boolean trained = false;
     static private int classSize;
@@ -58,9 +63,14 @@ public class Classifier {
     double[] maxs;
     private String TAG = "Classifier";
     private int prediction;
+    ArrayList<int[][]> windowRaw;
+    int[][][] set;
 
+    boolean b = false;
+    ArrayList<float[][]> trainingSet = new ArrayList<>();
     public Classifier(Activity activity) {
         this.activity = activity;
+        this.cnn = new CNN(activity);
     }
 
     public Classifier() {
@@ -86,16 +96,21 @@ public class Classifier {
         nIMUSensors = imus;
     }
 
-    public void Train(ArrayList<DataVector> trainVector, ArrayList<Integer> Classes) {
+    public void Train(ArrayList<int[][]> winRaw, ArrayList<DataVector> trainVector, ArrayList<Integer> Classes) {
 
         classSize = Classes.size();
         classes = new int[classSize];
+        int nSensors = getNumChannels();
+
         trainVectorP = new double[trainVector.size()][numFeatures * nSensors + nIMUSensors];
         for (int i = 0; i < trainVector.size(); i++) {
             for (int j = 0; j < numFeatures * nSensors + nIMUSensors; j++) {
                 trainVectorP[i][j] = trainVector.get(i).getValue(j).doubleValue();
             }
         }
+
+        windowRaw = winRaw;
+        //set = winRaw;
 
         for (int j = 0; j < Classes.size(); j++) {
             classes[j] = Classes.get(j);
@@ -240,7 +255,22 @@ public class Classifier {
                     break;
                 case 7:
                     //cnn.classifyAsync(new Double[]{21.6125,66.125,67.325,56.4875,40.1,12.05,15.4375,19.9625}).addOnSuccessListener(result -> Log.i("Gesture", result));
-                    cnn.classifyAsync(new Double[]{features[0],features[1],features[2],features[3],features[4],features[5],features[6],features[7]}).addOnSuccessListener(result -> prediction = result);
+                    //cnn.classifyAsync(new Double[]{features[0],features[1],features[2],features[3],features[4],features[5],features[6],features[7]}).addOnSuccessListener(result -> prediction = result);
+
+                    float[][] cnnFeatures = new float[52][8];
+                    for(int i = 0; i < features.length / 8; i++) {
+                        cnnFeatures[i][0] = (float) features[i*8];
+                    }
+                    TransferLearningModel.Prediction[] predictions = cnn.predict(cnnFeatures);
+                    float maxConfidence = 0F;
+                    for(int i = 0; i < predictions.length; i++) {
+                        Log.d("Confidence" + i, String.valueOf(predictions[i].getConfidence()));
+                        if(predictions[i].getConfidence() > maxConfidence) {
+                            maxConfidence = predictions[i].getConfidence();
+                            prediction = i;
+                            Log.d("Predict", String.valueOf(prediction));
+                        }
+                    }
                     break;
             }
 //            Log.d("TIME", String.valueOf(System.currentTimeMillis() - MyoGattCallback.superTimeInitial));
@@ -316,8 +346,54 @@ public class Classifier {
 
     public void trainCNN() {
         if (!trainedCNN) {
-            cnn = new CNN(activity.getApplicationContext());
-            cnn.initialize().addOnFailureListener( e -> Log.e("CNN Error", "Error to setting up gesture classifier.", e) );
+            /*cnn = new CNN(activity);
+            for(int sample = 0; sample < windowRaw.size(); sample++) {
+                float[][][] cnnFeatures = new float[32][32][3];
+                for(int i = 0; i < windowRaw.get(sample).length; i++) {
+                    for(int j = 0; j < windowRaw.get(sample)[0].length; j++) {
+                        cnnFeatures[i][j][0] = (float) windowRaw.get(sample)[i][j];
+                    }
+                }
+                Log.i("Class " + (sample < 10 ? 1 : 2), " " + sample);
+                if(sample == 0 || sample == 4 || sample == 5 || sample == 9) {
+                    Log.i("Image: " + sample, Arrays.deepToString(cnnFeatures));
+                }
+                try {
+                    cnn.addSample(cnnFeatures, Integer.toString(sample < 10 ? 1 : 2)).get();
+                } catch (ExecutionException e) {
+                    throw new RuntimeException("Failed to add sample to model", e.getCause());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            /*
+            for(int sample = 0; sample < 20; sample++) {
+                float[][][] cnnFeatures = new float[32][32][3];
+                for(int i = 0; i < set[sample].length; i++) {
+                    for(int j = 0; j < set[sample][0].length; j++) {
+                        cnnFeatures[i][j][0] = (float) set[sample][i][j];
+                    }
+                }
+                Log.i("Class " + (sample < 5 ? 1 : 2), " " + sample);
+                if(sample == 0 || sample == 4 || sample == 5 || sample == 9) {
+                    Log.i("Image: " + sample, Arrays.deepToString(cnnFeatures));
+                }
+                try {
+                    cnn.addSample(cnnFeatures, Integer.toString(sample < 5 ? 1 : 2)).get();
+                } catch (ExecutionException e) {
+                    throw new RuntimeException("Failed to add sample to model", e.getCause());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }*/
+            cnn.enableTraining((epoch, loss) -> {
+                Log.i("training" + epoch, String.valueOf(loss));
+                if(epoch >= 999) {
+                    cnn.disableTraining();
+                }
+            });
+            //cnn = new CNN(activity.getApplicationContext());
+            //cnn.initialize().addOnFailureListener( e -> Log.e("CNN Error", "Error to setting up gesture classifier.", e) );
             trainedCNN = true;
         }
     }
@@ -350,5 +426,114 @@ public class Classifier {
 
         return normalized;
     }
+
+    public boolean useRaw() {
+        if(choice == 7) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public int predictRaw(int[][] rawData) {
+        if(trained2 && trainedCNN) {
+            float[][] cnnFeatures = new float[52][8];
+            for(int i = 0; i < rawData.length; i++) {
+                for(int j = 0; j < rawData[i].length; j++) {
+                    cnnFeatures[i][j] = (float) rawData[i][j];
+                }
+            }
+            TransferLearningModel.Prediction[] predictions = cnn.predict(cnnFeatures);
+            float maxConfidence = 0F;
+            for(int i = 0; i < predictions.length; i++) {
+                Log.d("Confidence" + predictions[i].getClassName(), predictions[i].getConfidence() +Arrays.deepToString(cnnFeatures));
+                if(predictions[i].getConfidence() > maxConfidence && Integer.parseInt(predictions[i].getClassName()) <= classSize) {
+                    maxConfidence = predictions[i].getConfidence();
+                    prediction = Integer.parseInt(predictions[i].getClassName()) - 1;
+                }
+            }
+        }
+        return prediction;
+    }
+
+    public int predictRaw2(Queue<byte[]> buffer) {
+        if(trained2 && trainedCNN) {
+            float[][] cnnFeatures = new float[32][32];
+            int sample = 0;
+            for(byte[] b : buffer) {
+                int bufNum = 0;
+                for(int channel = 0; channel < 8; channel++) {
+                    cnnFeatures[sample / 4][(sample % 4) * 8 + channel] = (float) b[channel];
+                    bufNum++;
+                }
+                sample++;
+            }
+            TransferLearningModel.Prediction[] predictions = cnn.predict(cnnFeatures);
+            float maxConfidence = 0F;
+            for(int i = 0; i < predictions.length; i++) {
+                Log.d("Confidence" + predictions[i].getClassName(), predictions[i].getConfidence() +Arrays.deepToString(cnnFeatures));
+                if(predictions[i].getConfidence() > maxConfidence) {
+                    maxConfidence = predictions[i].getConfidence();
+                    prediction = Integer.parseInt(predictions[i].getClassName()) - 1;
+                }
+            }
+        }
+        return prediction;
+    }
+
+    public void addToRaw(int[][] window, int classNum) {
+        if(!b) {
+            cnn = new CNN(activity);
+            b = true;
+        }
+        float[][] cnnFeatures = new float[52][8];
+        for(int i = 0; i < window.length; i++) {
+            for(int j = 0; j < window[0].length; j++) {
+                cnnFeatures[i][j] = (float) window[i][j];
+            }
+        }
+        try {
+            cnn.addSample(cnnFeatures, String.valueOf(classNum + 1)).get();
+        } catch (ExecutionException e) {
+            throw new RuntimeException("Failed to add sample to model", e.getCause());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //windowRaw.add(window);
+        //Log.i("Image: " + windowRaw.size(), Arrays.deepToString(windowRaw.get(windowRaw.size()-1)));
+        //Log.i("Image: " + 0, Arrays.deepToString(windowRaw.get(0)));
+    }
+
+    public void addToRaw2(Queue<byte[]> buffer, int classNum) {
+        if(!b) {
+            cnn = new CNN(activity);
+            b = true;
+        }
+        float[][] cnnFeatures = new float[52][8];
+        int sample = 0;
+        for(byte[] b : buffer) {
+            int bufNum = 0;
+            for(int channel = 0; channel < 8; channel++) {
+                cnnFeatures[sample / 4][(sample % 4) * 8 + channel] = (float) b[channel];
+                bufNum++;
+            }
+            sample++;
+        }
+        if(trainingSet.size() < 8) {
+            Log.i("kiryu" + trainingSet.size(), Arrays.deepToString(cnnFeatures));
+        }
+        trainingSet.add(cnnFeatures);
+        try {
+            cnn.addSample(cnnFeatures, String.valueOf(classNum + 1)).get();
+        } catch (ExecutionException e) {
+            throw new RuntimeException("Failed to add sample to model", e.getCause());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //windowRaw.add(window);
+        //Log.i("Image: " + windowRaw.size(), Arrays.deepToString(windowRaw.get(windowRaw.size()-1)));
+        //Log.i("Image: " + 0, Arrays.deepToString(windowRaw.get(0)));
+    }
+
 
 }

@@ -86,6 +86,7 @@ public class ListActivity extends AppCompatActivity {
     private TextView scanningText;
     private ProgressBar prog;
     private ListView devicesList;
+    private EditText numChannelsInput;
 
     /*Updated by Ricardo Colin 06/15/18*/
     private Button scanButton;
@@ -208,6 +209,8 @@ public class ListActivity extends AppCompatActivity {
 
         adapter_hack = new ArrayAdapter<>(this, R.layout.listview_custom_item, R.id.listView_item, deviceNames_hack);
         devicesList_hack.setAdapter(adapter_hack);
+
+        numChannelsInput = (EditText) findViewById(R.id.number_channels);
 
         // Connect to BLE and Bluetooth devices
         connectButton = (Button) findViewById(R.id.connectButton);
@@ -377,7 +380,6 @@ public class ListActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),  myoName + " and HACKberry Arm are connecting...", Toast.LENGTH_SHORT).show();
             }
 
-            final EditText numChannelsInput = (EditText) findViewById(R.id.number_channels);
             numChannels = Integer.parseInt(numChannelsInput.getText().toString());
 
             Intent intent;

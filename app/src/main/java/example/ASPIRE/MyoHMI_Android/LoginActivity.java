@@ -17,12 +17,15 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.tensorflow.lite.examples.transfer.api.TransferLearningModel;
+
+import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends AppCompatActivity {
 
     public static boolean loggedIn = false;
     public static String user = "no_login";
-    private CNN cnn = new CNN(this);
+    private CNN cnn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,38 @@ public class LoginActivity extends AppCompatActivity {
         final TextView tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
         final Button bLogin = (Button) findViewById(R.id.bSignIn);
         final TextView tvContinueLink = (TextView) findViewById(R.id.tvcontinue);
-        cnn.initialize().addOnFailureListener( e -> Log.e("CNN Error", "Error to setting up gesture classifier.", e) );
+        //cnn.initialize().addOnFailureListener( e -> Log.e("CNN Error", "Error to setting up gesture classifier.", e) );
 
+        /*cnn = new CNN(this);
+
+        float[][][] f = new float[32][32][3];
+
+        f[0][10][0] = 30F;
+
+        TransferLearningModel.Prediction[] predictions = cnn.predict(f);
+
+        for (TransferLearningModel.Prediction prediction : predictions) {
+            Log.i("training" + prediction.getClassName(), String.valueOf(prediction.getConfidence()));
+        }
+        try {
+            for(int i = 0; i < 1; i++)
+                cnn.addSample(f, "1").get();
+        } catch (ExecutionException e) {
+            throw new RuntimeException("Failed to add sample to model", e.getCause());
+        } catch (InterruptedException e) {
+            // no-op
+        }
+        cnn.enableTraining((epoch, loss) -> {
+            Log.i("training" + epoch, String.valueOf(loss));
+            if(epoch >= 99) {
+                cnn.disableTraining();
+                TransferLearningModel.Prediction[] predict = cnn.predict(f);
+
+                for (TransferLearningModel.Prediction prediction : predict) {
+                    Log.i("training" + prediction.getClassName(), String.valueOf(prediction.getConfidence()));
+                }
+            }
+        });*/
         tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -14,7 +14,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import static java.lang.Float.isFinite;
 
@@ -74,7 +76,14 @@ public class FeatureCalculator {
     int winnext = winsize + 1;    //winsize + 2 samples until first feature
     int numFeatSelected = 6;
     int nSamples = 100; //Kattia: Should be set by the user and have interaction in GUI
-    byte[] windowFeat = new byte[96];
+    int CNN_BATCH = 5;
+    int batchIncrement = 0;
+    private int[][] windowRaw = new int[52][8];
+    private static int[][][] set = new int[50][32][32];
+    private static ArrayList<int[][]> cnnTrainSet = new ArrayList<>();
+    private int rawIncrement = 0;
+    private int rawIncrementRows = 0;
+    private Queue<byte[]> rawBuffer = new LinkedList<byte[]>();
     byte[] sendWindow = new byte[0];
     private String TAG = "FeatureCalculator";
 //    private static SaveData saver;
@@ -165,14 +174,18 @@ public class FeatureCalculator {
         classes.add(currentClass);
     }
 
-    public static void pushClassifier(DataVector inFeatemg) {
+    public static void pushClassifier(Queue<byte[]> buffer, int[][] windowRaw, DataVector inFeatemg) {
 
         startClass = System.nanoTime();
 
-//        Log.d("Featureslength: ", String.valueOf(inFeatemg.getLength()));
+        //Log.d("Featureslength: ", String.valueOf(inFeatemg.getLength()));
 
-        prediction = classifier.predict(inFeatemg);
-
+        if(classifier.useRaw()) {
+            prediction = classifier.predictRaw(windowRaw);
+            //prediction = classifier.predictRaw2(windowRaw);
+        } else {
+            prediction = classifier.predict(inFeatemg);
+        }
 
         //Log.d("FeatureCalculator", String.valueOf(prediction));
         Log.d("FeatureCalculator", gestures.get(prediction));
@@ -224,7 +237,9 @@ public class FeatureCalculator {
     public static void Train() {
         /* To save training data to file for server comp time analysis */
 //        File file = saver.addData(samplesClassifier);
-        classifier.Train(samplesClassifier, classes);
+
+        classifier.Train(cnnTrainSet, samplesClassifier, classes);
+        //cnnTrainSet.clear();
     }
 
     public static void reset() {
@@ -306,6 +321,38 @@ public class FeatureCalculator {
 
         samplebuffer.add(ibuf, data);
 
+        rawBuffer.add(dataBytes);
+        while(rawBuffer.size() > 32) {
+            rawBuffer.remove();
+        }
+
+        for(int i = 0; i < dataBytes.length; i++) {
+            windowRaw[rawIncrement][i] = dataBytes[i];
+        }
+        if(train && classifier.useRaw()) {
+            //classifier.addToRaw2(rawBuffer, currentClass);
+            //batchIncrement++;
+        } else if(classify && classifier.useRaw()) {
+            //pushClassifier(rawBuffer, aux[0]);
+        }
+            if(rawIncrement < 51) {
+                rawIncrement++;
+            } else {
+                if(train) {
+                    //cnnTrainSet.add(windowRaw);
+                    //Log.i("Image: " + cnnTrainSet.size(), Arrays.deepToString(cnnTrainSet.get(cnnTrainSet.size()-1)));
+                    //Log.i("Image: " + 0, Arrays.deepToString(cnnTrainSet.get(0)));
+                    classifier.addToRaw(windowRaw, currentClass);
+                    //set[batchIncrement] = windowRaw;
+                    windowRaw = new int[52][8];
+                    batchIncrement++;
+                } else if (classify && classifier.useRaw()) {
+                    pushClassifier(rawBuffer, windowRaw, aux[0]);
+                    windowRaw = new int[52][8];
+                }
+                rawIncrement = 0;
+            }
+
         if (samplebuffer.size() > bufsize)//limit size of buffer to bufsize
             samplebuffer.remove(samplebuffer.size() - 1);
 
@@ -352,12 +399,23 @@ public class FeatureCalculator {
                 if (aux != null) {
                     pushClassifyTrainer(aux);
                 }
-                if (samplesClassifier.size() % (nSamples) == 0 && samplesClassifier.size() != 0) { //triggers
-                    setTrain(false);
-                    currentClass++;
+                if(classifier.useRaw()) {
+                    Log.i("cnnTrainset" + cnnTrainSet.size(), ":" + CNN_BATCH*(currentClass+1));
+                    if(batchIncrement >= CNN_BATCH * (currentClass+1)) {
+                        setTrain(false);
+                        while (cnnTrainSet.size() > CNN_BATCH * (currentClass+1)) {
+                            cnnTrainSet.remove(CNN_BATCH * (currentClass+1) - 1);
+                        }
+                        currentClass++;
+                    }
+                } else {
+                    if (samplesClassifier.size() % (nSamples) == 0 && samplesClassifier.size() != 0) { //triggers
+                        setTrain(false);
+                        currentClass++;
+                    }
                 }
-            } else if (classify) {
-                pushClassifier(aux[0]);
+            } else if (classify && !classifier.useRaw()) {
+                pushClassifier(rawBuffer, windowRaw, aux[0]);
             }
 
             /*********************************************** End of Local Processes ***********************************************/
