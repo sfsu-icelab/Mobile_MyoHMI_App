@@ -82,8 +82,6 @@ public class FeatureCalculator {
     private static int[][][] set = new int[50][32][32];
     private static ArrayList<int[][]> cnnTrainSet = new ArrayList<>();
     private int rawIncrement = 0;
-    private int rawIncrementRows = 0;
-    private Queue<byte[]> rawBuffer = new LinkedList<byte[]>();
     byte[] sendWindow = new byte[0];
     private String TAG = "FeatureCalculator";
 //    private static SaveData saver;
@@ -174,11 +172,9 @@ public class FeatureCalculator {
         classes.add(currentClass);
     }
 
-    public static void pushClassifier(Queue<byte[]> buffer, int[][] windowRaw, DataVector inFeatemg) {
+    public static void pushClassifier(int[][] windowRaw, DataVector inFeatemg) {
 
         startClass = System.nanoTime();
-
-        //Log.d("Featureslength: ", String.valueOf(inFeatemg.getLength()));
 
         if(classifier.useRaw()) {
             prediction = classifier.predictRaw(windowRaw);
@@ -321,37 +317,22 @@ public class FeatureCalculator {
 
         samplebuffer.add(ibuf, data);
 
-        rawBuffer.add(dataBytes);
-        while(rawBuffer.size() > 32) {
-            rawBuffer.remove();
-        }
-
         for(int i = 0; i < dataBytes.length; i++) {
             windowRaw[rawIncrement][i] = dataBytes[i];
         }
-        if(train && classifier.useRaw()) {
-            //classifier.addToRaw2(rawBuffer, currentClass);
-            //batchIncrement++;
-        } else if(classify && classifier.useRaw()) {
-            //pushClassifier(rawBuffer, aux[0]);
-        }
-            if(rawIncrement < 51) {
-                rawIncrement++;
-            } else {
-                if(train) {
-                    //cnnTrainSet.add(windowRaw);
-                    //Log.i("Image: " + cnnTrainSet.size(), Arrays.deepToString(cnnTrainSet.get(cnnTrainSet.size()-1)));
-                    //Log.i("Image: " + 0, Arrays.deepToString(cnnTrainSet.get(0)));
-                    classifier.addToRaw(windowRaw, currentClass);
-                    //set[batchIncrement] = windowRaw;
-                    windowRaw = new int[52][8];
-                    batchIncrement++;
-                } else if (classify && classifier.useRaw()) {
-                    pushClassifier(rawBuffer, windowRaw, aux[0]);
-                    windowRaw = new int[52][8];
-                }
-                rawIncrement = 0;
+        if(rawIncrement < 51) {
+            rawIncrement++;
+        } else {
+            if(train) {
+                classifier.addToRaw(windowRaw, currentClass);
+                windowRaw = new int[52][8];
+                batchIncrement++;
+            } else if (classify && classifier.useRaw()) {
+                pushClassifier(windowRaw, aux[0]);
+                windowRaw = new int[52][8];
             }
+            rawIncrement = 0;
+        }
 
         if (samplebuffer.size() > bufsize)//limit size of buffer to bufsize
             samplebuffer.remove(samplebuffer.size() - 1);
@@ -415,7 +396,7 @@ public class FeatureCalculator {
                     }
                 }
             } else if (classify && !classifier.useRaw()) {
-                pushClassifier(rawBuffer, windowRaw, aux[0]);
+                pushClassifier(windowRaw, aux[0]);
             }
 
             /*********************************************** End of Local Processes ***********************************************/
