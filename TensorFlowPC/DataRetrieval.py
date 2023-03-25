@@ -8,6 +8,90 @@ Program containing methods for retrieving data from dataset
 
 """
 
+def dataset_mat_Myo(fileAddress, window_length):
+    """
+    Scans a .mat file for sEMG data
+
+    Parameters
+    ----------
+    fileAddress: String
+        The location of the file to be read on the file explorer
+        Must end with '.txt'
+    rows: Integer
+        Number of rows in the sEMG Array
+    cols: Integer
+        Number of columns in the sEMG Array
+    
+
+    Returns
+    -------
+    data: List (List (List (Integer)))
+        List of sEMG images
+    """
+    
+    import scipy.io
+    
+    # Read .mat file into Dictionary object and extract list of data
+    mat = scipy.io.loadmat(fileAddress)['emg']
+    
+    labels = scipy.io.loadmat(fileAddress)['restimulus']
+    
+    # Instantiate empty dataset
+    #data = [[[0 for channel in range(8)] for window_index in range(window_length)] for sample in range(len(mat))]
+    #encoded_labels = [[0 for channel in range(8)] for sample in range(len(mat))]
+    data = [[],[],[],[],[],[],[],[]]
+    encoded_labels = []
+    data_windows = [[[0 for channel in range(8)] for window_index in range(window_length)] for sample in range(8)]
+    window_iter = [0,0,0,0,0,0,0,0]
+    
+    # Iterate through samples
+    for row in range(len(mat)):    
+        current_gesture = -1
+        
+        if labels[row][0] == 0:
+            current_gesture = 0
+            
+        elif labels[row][0] == 6:
+            current_gesture = 1
+            
+        elif labels[row][0] == 7:
+            current_gesture = 2
+            
+        
+        elif labels[row][0] == 5:
+            current_gesture = 3
+            
+        
+        elif labels[row][0] == 13:
+            current_gesture = 4
+            
+        
+        elif labels[row][0] == 14:
+            current_gesture = 5
+            
+        
+        elif labels[row][0] == 11:
+            current_gesture = 6
+            
+        
+        elif labels[row][0] == 12:
+            current_gesture = 7
+        
+        if current_gesture >= 0:
+            data_windows[current_gesture][window_iter[current_gesture]] = mat[row][0:8]
+            if window_iter[current_gesture] < 51:
+                window_iter[current_gesture] = window_iter[current_gesture] + 1
+            else:
+                data[current_gesture].append(data_windows[current_gesture])
+                data_windows = [[[0 for channel in range(8)] for window_index in range(window_length)] for sample in range(8)]
+                encoded_label = [0,0,0,0,0,0,0,0]
+                encoded_label[current_gesture] = 1
+                encoded_labels.append(encoded_label)
+                window_iter[current_gesture] = 0
+    
+    return data, encoded_labels
+
+
 def dataset_mat_CSL(fileAddress, rows, cols):
     """
     Scans a .mat file for sEMG data
@@ -128,13 +212,13 @@ def dataset(fileAddress, window_length, sliding_increment=1):
             channel = 0
             string_arr = str.replace('{', '').replace('}', '').replace(',', '').split()
             for i in range(len(string_arr)):
-                data[current_window+i][channel] = int(string_arr[i])
+                data[current_window+i][channel] = int(string_arr[i]) / 8
             channel = channel + 1
         #Indicates the next channel
         elif(str[0] == '{'):
             string_arr = str.replace('{', '').replace('}', '').replace(',', '').split()
             for i in range(len(string_arr)):
-                data[current_window+i][channel] = int(string_arr[i])
+                data[current_window+i][channel] = int(string_arr[i]) / 8
             channel = channel + 1
     
     return [data[i:i + window_length] for i in range(0, len(data)-100, sliding_increment)]
