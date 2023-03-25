@@ -11,6 +11,7 @@ Program containing methods for retrieving data from dataset
 def dataset_mat_Myo(fileAddress, window_length):
     """
     Scans a .mat file for sEMG data
+    .mat file taken from NinaPro Dataset DB5
 
     Parameters
     ----------
@@ -37,8 +38,6 @@ def dataset_mat_Myo(fileAddress, window_length):
     labels = scipy.io.loadmat(fileAddress)['restimulus']
     
     # Instantiate empty dataset
-    #data = [[[0 for channel in range(8)] for window_index in range(window_length)] for sample in range(len(mat))]
-    #encoded_labels = [[0 for channel in range(8)] for sample in range(len(mat))]
     data = [[],[],[],[],[],[],[],[]]
     encoded_labels = []
     data_windows = [[[0 for channel in range(8)] for window_index in range(window_length)] for sample in range(8)]
@@ -48,39 +47,52 @@ def dataset_mat_Myo(fileAddress, window_length):
     for row in range(len(mat)):    
         current_gesture = -1
         
+        # See NinaPro Dataset for information on gestures performed
         if labels[row][0] == 0:
+            # Set to Rest
             current_gesture = 0
             
         elif labels[row][0] == 6:
+            # Set to Fist
             current_gesture = 1
             
         elif labels[row][0] == 7:
+            # Set to Point
             current_gesture = 2
-            
         
         elif labels[row][0] == 5:
+            # Set to All Finger Abduction (Open Hand)
             current_gesture = 3
-            
         
         elif labels[row][0] == 13:
+            # Set to Wrist Flexion (Wave-In)
             current_gesture = 4
             
         
         elif labels[row][0] == 14:
+            # Set to Wrist Extension (Wave-Out)
             current_gesture = 5
             
         
         elif labels[row][0] == 11:
+            # Set to Wrist Supination
             current_gesture = 6
             
         
         elif labels[row][0] == 12:
+            # Set to Wrist Pronation
             current_gesture = 7
         
+        # If the current gesture being read is one that we want for training, save to that gesture's buffer
         if current_gesture >= 0:
+            # Save to current buffer location
             data_windows[current_gesture][window_iter[current_gesture]] = mat[row][0:8]
+            
+            # Buffer is not full
             if window_iter[current_gesture] < 51:
                 window_iter[current_gesture] = window_iter[current_gesture] + 1
+                
+            # Buffer is full, so save as sEMG image with an associated gesture label
             else:
                 data[current_gesture].append(data_windows[current_gesture])
                 data_windows = [[[0 for channel in range(8)] for window_index in range(window_length)] for sample in range(8)]
