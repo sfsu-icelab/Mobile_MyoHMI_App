@@ -176,10 +176,12 @@ public class FeatureCalculator {
 
         startClass = System.nanoTime();
 
+        // If CNN is used, predict using CNN
         if(classifier.useRaw()) {
             prediction = classifier.predictRaw(windowRaw);
-            //prediction = classifier.predictRaw2(windowRaw);
-        } else {
+        }
+        // Predict using machine learning algorithm
+        else {
             prediction = classifier.predict(inFeatemg);
         }
 
@@ -234,8 +236,7 @@ public class FeatureCalculator {
         /* To save training data to file for server comp time analysis */
 //        File file = saver.addData(samplesClassifier);
 
-        classifier.Train(cnnTrainSet, samplesClassifier, classes);
-        //cnnTrainSet.clear();
+        classifier.Train(samplesClassifier, classes);
     }
 
     public static void reset() {
@@ -317,18 +318,32 @@ public class FeatureCalculator {
 
         samplebuffer.add(ibuf, data);
 
+        // Append current sample to image
         for(int i = 0; i < dataBytes.length; i++) {
             windowRaw[rawIncrement][i] = dataBytes[i];
         }
+
+        // Image is not full
         if(rawIncrement < 51) {
             rawIncrement++;
-        } else {
+        }
+        // Image is full, so either add to training set or predict which gesture is being performed
+        else {
+            // If Training is in progress
             if(train) {
+                // Append image to training set
                 classifier.addToRaw(windowRaw, currentClass);
+
+                // Create new image
                 windowRaw = new int[52][8];
                 batchIncrement++;
-            } else if (classify && classifier.useRaw()) {
+            }
+            // CNN Classication is ready
+            else if (classify && classifier.useRaw()) {
+                // Send image for prediction
                 pushClassifier(windowRaw, aux[0]);
+
+                // Create new image
                 windowRaw = new int[52][8];
             }
             rawIncrement = 0;
@@ -380,13 +395,20 @@ public class FeatureCalculator {
                 if (aux != null) {
                     pushClassifyTrainer(aux);
                 }
+                // If CNN is used
                 if(classifier.useRaw()) {
                     Log.i("cnnTrainset" + cnnTrainSet.size(), ":" + CNN_BATCH*(currentClass+1));
+                    // If enough samples have been collected for current gesture
                     if(batchIncrement >= CNN_BATCH * (currentClass+1)) {
+                        // Stop training
                         setTrain(false);
+
+                        // Remove any extra samples
                         while (cnnTrainSet.size() > CNN_BATCH * (currentClass+1)) {
                             cnnTrainSet.remove(CNN_BATCH * (currentClass+1) - 1);
                         }
+
+                        // Move on to next gesture
                         currentClass++;
                     }
                 } else {

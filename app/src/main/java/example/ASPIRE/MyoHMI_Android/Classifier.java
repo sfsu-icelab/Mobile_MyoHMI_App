@@ -63,10 +63,10 @@ public class Classifier {
     double[] maxs;
     private String TAG = "Classifier";
     private int prediction;
-    ArrayList<int[][]> windowRaw;
     int[][][] set;
 
-    boolean b = false;
+    // Whether or not the CNN been trained yet
+    boolean isCNNTrained = false;
 
     public Classifier(Activity activity) {
         this.activity = activity;
@@ -96,7 +96,7 @@ public class Classifier {
         nIMUSensors = imus;
     }
 
-    public void Train(ArrayList<int[][]> winRaw, ArrayList<DataVector> trainVector, ArrayList<Integer> Classes) {
+    public void Train(ArrayList<DataVector> trainVector, ArrayList<Integer> Classes) {
 
         classSize = Classes.size();
         classes = new int[classSize];
@@ -108,8 +108,6 @@ public class Classifier {
                 trainVectorP[i][j] = trainVector.get(i).getValue(j).doubleValue();
             }
         }
-
-        windowRaw = winRaw;
 
         for (int j = 0; j < Classes.size(); j++) {
             classes[j] = Classes.get(j);
@@ -324,10 +322,16 @@ public class Classifier {
         }
     }
 
+    /**
+     * Fine-tunes the model for 1000 Epochs
+     */
     public void trainCNN() {
+        // Will train only once
         if (!trainedCNN) {
+            // Start training
             cnn.enableTraining((epoch, loss) -> {
                 Log.i("training" + epoch, String.valueOf(loss));
+                // End training after 1000 epochs
                 if(epoch >= 999) {
                     cnn.disableTraining();
                 }
@@ -365,6 +369,12 @@ public class Classifier {
         return normalized;
     }
 
+    /**
+     * Returns whether or not app should save raw sEMG images
+     * True only if CNN is chosen as a classifier
+     *
+     * @return boolean Whether the app should save raw sEMG images
+     */
     public boolean useRaw() {
         if(choice == 7) {
             return true;
@@ -395,9 +405,9 @@ public class Classifier {
     }
 
     public void addToRaw(int[][] window, int classNum) {
-        if(!b) {
+        if(!isCNNTrained) {
             cnn = new CNN(activity);
-            b = true;
+            isCNNTrained = true;
         }
         float[][] cnnFeatures = new float[52][8];
         for(int i = 0; i < window.length; i++) {
@@ -412,9 +422,6 @@ public class Classifier {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //windowRaw.add(window);
-        //Log.i("Image: " + windowRaw.size(), Arrays.deepToString(windowRaw.get(windowRaw.size()-1)));
-        //Log.i("Image: " + 0, Arrays.deepToString(windowRaw.get(0)));
     }
 
 }

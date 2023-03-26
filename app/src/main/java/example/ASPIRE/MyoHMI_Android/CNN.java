@@ -33,14 +33,17 @@ import org.tensorflow.lite.examples.transfer.api.TransferLearningModel.Predictio
  * run-once API of {@link TransferLearningModel}.
  */
 public class CNN implements Closeable {
-    public static final int IMAGE_SIZE = 32;
 
     private final TransferLearningModel model;
 
     private final ConditionVariable shouldTrain = new ConditionVariable();
     private volatile LossConsumer lossConsumer;
 
+    // Number of epochs to finetune model for
+    private final int NUM_EPOCHS = 1000;
+
     CNN(Context context) {
+        // Initialize Deep Learning Model and specify classes
         model =
                 new TransferLearningModel(
                         new ModelLoader(context, "model"), Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8"));
@@ -49,7 +52,8 @@ public class CNN implements Closeable {
             while (!Thread.interrupted()) {
                 shouldTrain.block();
                 try {
-                    model.train(1000, lossConsumer).get();
+                    // Finetune model for 1000 epochs
+                    model.train(NUM_EPOCHS, lossConsumer).get();
                 } catch (ExecutionException e) {
                     throw new RuntimeException("Exception occurred during model training", e.getCause());
                 } catch (InterruptedException e) {
