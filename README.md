@@ -26,6 +26,19 @@ In 2021, we introduced the capability for the app to connect to a BLE-equipped m
     - 8 Confidences will always be generated regardless of how many are selected by the user.
     - If the user trains fewer than 8 gestures, those that have been unselected by the user are ignored when making a prediction.
   - CNN is Fine-tuned on user data for 1000 Epochs
+- TensorFlowPC > generate_training_model.py
+  - Added a class which generates a deep learning CNN model.
+    - Model describes a 2-layer CNN which accepts an 8-channel x 52-window sEMG image and generates 8 output classes.
+  - Model is trained off of the NinaPro DB5 dataset.
+  - Added "signature" functions which can be called by Android.
+    - Allows Android to execute Python code.
+- TensorFlowPC > dataset.py
+  - Added several functions which allow for the extraction of sEMG data.
+- TensorFlowPC > Ninapro_DB5
+  - Added Folder containing NinaPro DB5 data.
+  - Data is in .mat (Microsoft Access Table) format.
+  - Each of 10 subjects has their own subfolder.
+  - Each subject has 3 trials of data.
 
 2021 UPDATES:
 - layout-normal > fragment_emg.xml
